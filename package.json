@@ -1,0 +1,31 @@
+{
+  "name": "ydx-nodejs-hw01",
+  "version": "1.0.0",
+  "description": "Домашняя работа по nodejs в рамках ШРИ",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "PORT=8080 node src/server.js",
+    "dev": "PORT=8080 nodemon src/server.js",
+    "format": "prettier --write src/**/*js test/**/*js",
+    "lint": "eslint 'src/**/*.js' 'test/**/*.js'",
+    "test": "NODE_OPTIONS=--experimental-vm-modules jest",
+    "test:watch": "NODE_OPTIONS=--experimental-vm-modules jest --watchAll"
+  },
+  "author": "Artemy Magarin",
+  "license": "UNLICENSED",
+  "private": "true",
+  "type": "module",
+  "devDependencies": {
+    "eslint": "^7.32.0",
+    "eslint-plugin-jest": "^24.5.0",
+    "fastify-plugin": "^3.0.0",
+    "jest": "^27.2.4",
+    "nodemon": "^2.0.13",
+    "prettier": "^2.4.1"
+  },
+  "dependencies": {
+    "fastify": "^3.22.0",
+    "fastify-multipart": "^5.0.1",
+    "nanoid": "^3.1.28"
+  }
+}
