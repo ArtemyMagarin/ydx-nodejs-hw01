@@ -63,24 +63,24 @@ describe("Test delete image", () => {
       headers: form.getHeaders(),
     });
     expect(res.statusCode).toEqual(201);
-    const picture = res.json();
+    const id = res.payload;
 
     expect(
       async () =>
         await fs.promises.access(
-          path.resolve(__dirname, "../userImages", `${picture.id}.png`),
+          path.resolve(__dirname, "../userImages", `${id}.png`),
           fs.F_OK
         )
     ).not.toThrow();
 
     await app.inject({
       method: "DELETE",
-      url: `/image/${picture.id}`,
+      url: `/image/${id}`,
     });
 
     await expect(
       fs.promises.access(
-        path.resolve(__dirname, "../userImages", `${picture.id}.png`),
+        path.resolve(__dirname, "../userImages", `${id}.png`),
         fs.F_OK
       )
     ).rejects.toThrow();

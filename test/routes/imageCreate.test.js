@@ -48,7 +48,7 @@ describe("Test create image", () => {
       headers: form.getHeaders(),
     });
     expect(res.statusCode).toEqual(201);
-    const { id } = res.json();
+    const id = res.payload;
     created.push(id);
 
     const { headers } = await app.inject({

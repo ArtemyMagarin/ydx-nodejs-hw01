@@ -48,9 +48,9 @@ describe("Test merging route", () => {
       payload: form,
       headers: form.getHeaders(),
     });
-    const json = res.json();
-    created.push(json.id);
-    return json;
+    const id = res.payload;
+    created.push(id);
+    return { id, filename };
   };
 
   test("Trivial merge should work", async () => {
