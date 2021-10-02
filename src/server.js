@@ -1,7 +1,7 @@
 import Fastify from "fastify";
 import app from "./app.js";
 
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT ? Number(process.env.PORT) : 8080;
 const fastify = Fastify({ logger: true });
 
 app(fastify)
