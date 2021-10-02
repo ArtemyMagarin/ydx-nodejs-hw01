@@ -10,6 +10,4 @@ async function imageCreate(req, reply) {
   }
 }
 
-export default {
-  handler: imageCreate,
-};
+export default imageCreate;

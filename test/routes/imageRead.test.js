@@ -18,7 +18,7 @@ describe("Test retrieve image route", () => {
     expect(res.statusCode).toEqual(404);
   });
 
-  test("Can retrieve existing image", async () => {
+  test("Image without real file raises 404 error", async () => {
     new Picture({
       id: 1,
       filename: "test.jpeg",
@@ -29,6 +29,6 @@ describe("Test retrieve image route", () => {
     const res = await app.inject({
       url: "/image/1",
     });
-    expect(res.statusCode).toEqual(200);
+    expect(res.statusCode).toEqual(404);
   });
 });

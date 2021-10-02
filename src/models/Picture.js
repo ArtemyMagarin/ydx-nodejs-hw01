@@ -2,12 +2,6 @@ import { nanoid } from "nanoid";
 import db from "../database/index.js";
 
 export default class Picture {
-  _id;
-  _filename;
-  _mimeType;
-  _size;
-  _uploadedAt;
-
   constructor({
     id = nanoid(),
     filename,

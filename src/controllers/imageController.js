@@ -1,28 +1,5 @@
-import fs from "fs";
-import path from "path";
-import { __dirname } from "../utils.js";
+import { saveFile, deleteFile, picture2filename } from "../utils.js";
 import Picture from "../models/Picture.js";
-
-async function saveFile(filename, buffer) {
-  return new Promise((resolve, reject) => {
-    const ws = fs.createWriteStream(
-      path.resolve(__dirname, "../userImages", filename)
-    );
-    ws.on("error", reject);
-    ws.on("close", resolve);
-    buffer.pipe(ws);
-  });
-}
-
-async function deleteFile(filename) {
-  try {
-    await fs.promises.unlink(
-      path.resolve(__dirname, "../userImages", filename)
-    );
-  } catch (e) {
-    // just ignore for now
-  }
-}
 
 export async function saveImage({ file, filename, mimeType = "image/jpeg" }) {
   const picture = new Picture({
@@ -30,9 +7,7 @@ export async function saveImage({ file, filename, mimeType = "image/jpeg" }) {
     mimeType,
     size: file.length,
   });
-  const { id } = picture.toJSON();
-  const ext = mimeType.split("/")[1];
-  await saveFile(`${id}.${ext}`, file);
+  await saveFile(picture2filename(picture), file);
   await picture.save();
   return picture;
 }
@@ -42,14 +17,8 @@ export async function deleteImage({ id }) {
   if (!picture) {
     return null;
   }
-  const { mimeType } = picture.toJSON();
-  try {
-    await deleteFile(`${id}.${mimeType.split("/")[1]}`);
-  } catch (e) {
-    // just ignore, ok?
-    console.log(e);
-  }
-  picture.delete();
+  await deleteFile(picture2filename(picture));
+  await picture.delete();
   return id;
 }
 

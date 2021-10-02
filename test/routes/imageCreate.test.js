@@ -48,6 +48,12 @@ describe("Test create image", () => {
       headers: form.getHeaders(),
     });
     expect(res.statusCode).toEqual(201);
-    created.push(res.json().id);
+    const { id } = res.json();
+    created.push(id);
+
+    const { headers } = await app.inject({
+      url: `/image/${id}`,
+    });
+    expect(headers["content-type"]).toBe("image/png");
   });
 });
