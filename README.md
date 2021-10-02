@@ -20,7 +20,7 @@ Cервис для замены фона у изображений: прилож
 `GET /merge?front=<id>&back=<id>&color=145,54,32&threshold=5`  — замена фона у изображения
 
 
-### Запуск
+## Запуск
 ```bash
 npm i
 npm run start
@@ -28,10 +28,10 @@ npm run start
 
 Если нужен live-reload:
 ```bash
-npm runn dev
+npm run dev
 ```
 
-### Тестировние
+## Тестировние
 
 Единичный запуск
 ```bash
