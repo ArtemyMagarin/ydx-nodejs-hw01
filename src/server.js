@@ -8,6 +8,6 @@ app(fastify)
   .listen(PORT)
   .then(() => console.log(`Started server on port ${PORT}`))
   .catch((err) => {
-    app.log.error(err);
+    fastify.log.error(err);
     process.exit(1);
   });
