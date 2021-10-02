@@ -2,12 +2,12 @@
 
 import fs from "fs";
 import path from "path";
-import { __dirname } from "../../src/utils";
+import { __dirname } from "../../src/utils.js";
 import FormData from "form-data";
 
-import db from "../../src/database";
-import Picture from "../../src/models/Picture";
-import { build } from "../helper";
+import db from "../../src/database/index.js";
+import Picture from "../../src/models/Picture.js";
+import { build } from "../helper.js";
 
 describe("Test delete image", () => {
   const app = build();

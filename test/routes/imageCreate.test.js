@@ -1,12 +1,12 @@
 /* eslint-env jest */
 
-import db from "../../src/database";
+import db from "../../src/database/index.js";
 import path from "path";
 import FormData from "form-data";
 import fs from "fs";
-import { build } from "../helper";
-import { deleteImage } from "../../src/controllers/imageController";
-import { __dirname } from "../../src/utils";
+import { build } from "../helper.js";
+import { deleteImage } from "../../src/controllers/imageController.js";
+import { __dirname } from "../../src/utils.js";
 
 describe("Test create image", () => {
   const app = build();
