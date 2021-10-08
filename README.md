@@ -22,13 +22,12 @@ Cервис для замены фона у изображений: прилож
 
 ## Запуск
 ```bash
-npm i
-npm run start
+npm ci && npm start
 ```
 
 Если нужен live-reload:
 ```bash
-npm run dev
+npm ci && npm run dev
 ```
 
 ## Тестировние
